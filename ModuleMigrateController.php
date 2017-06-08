@@ -115,6 +115,12 @@ class ModuleMigrateController extends MigrateController
     {
         $result = [];
         foreach ($this->allMigrationPaths as $path) {
+            /**
+            *   костыль
+            */
+            if(is_array($path)){
+                $path = $path['0'];
+            }
             if (!file_exists($path) || is_file($path)) {
                 continue;
             }
